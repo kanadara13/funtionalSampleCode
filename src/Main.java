@@ -2,10 +2,7 @@ import book.Book;
 import book.BookCategory;
 import book.BookShop;
 import book.Printer;
-import book.filter.BookCategoryFilter;
-import book.filter.BookFilter;
-import book.filter.BookTitleFilter;
-import book.filter.Filter;
+import book.filter.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +36,8 @@ public class Main {
 
         List<Book> filterWithLambda = new BookFilter(book -> book.getCategory() ==  BookCategory.HISTORY, books).filter();
         Printer.print(filterWithLambda);
+
+        //List<Book> filterWithLambdaV2 = new BookFilterNotWork(book -> book.getCategory() ==  BookCategory.HISTORY, books).filter();
     }
 
     private static List<Book> getBooksByTitleBeforeJava8(List<Book> books, String keyword) {
@@ -60,8 +59,4 @@ public class Main {
         }
         return filteredBooks;
     }
-
-/*    private static List<Book> getBooksByBookCategory(BookCategory it) {
-
-    }*/
 }
