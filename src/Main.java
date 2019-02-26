@@ -6,6 +6,7 @@ import book.filter.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -43,6 +44,9 @@ public class Main {
         List<Book> limitedBooksByMethodReference = new BookFilter(Book::isLimited, books).filter();
         Printer.print(limitedBooksByMethodReference);
         //List<Book> filterWithLambdaV2 = new BookFilterNotWork(book -> book.getCategory() ==  BookCategory.HISTORY, books).filter();
+
+        List<Book> limitedBooksByStream = books.stream().filter(book -> book.isLimited()).collect(Collectors.toList());
+        Printer.print(limitedBooksByStream);
     }
 
     private static List<Book> getBooksByTitleBeforeJava8(List<Book> books, String keyword) {
