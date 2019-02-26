@@ -37,6 +37,11 @@ public class Main {
         List<Book> filterWithLambda = new BookFilter(book -> book.getCategory() ==  BookCategory.HISTORY, books).filter();
         Printer.print(filterWithLambda);
 
+        List<Book> limitedBooks = new BookFilter(b -> b.isLimited(), books).filter();
+        Printer.print(limitedBooks);
+
+        List<Book> limitedBooksByMethodReference = new BookFilter(Book::isLimited, books).filter();
+        Printer.print(limitedBooksByMethodReference);
         //List<Book> filterWithLambdaV2 = new BookFilterNotWork(book -> book.getCategory() ==  BookCategory.HISTORY, books).filter();
     }
 
